@@ -1,6 +1,6 @@
 import UIKit
 
-class ListView: UIView {
+final class ListView: UIView {
     let tableView: UITableView = {
         let tableView = UITableView ()
         tableView.backgroundColor = .clear

@@ -1,7 +1,7 @@
 import UIKit
 import Kingfisher
 
-class CharacterDetailController: UIViewController, ViewSpecificController {
+final class CharacterDetailController: UIViewController, ViewSpecificController {
     typealias RootView = CharacterDetailView
 
     var character: Character?
@@ -14,6 +14,5 @@ class CharacterDetailController: UIViewController, ViewSpecificController {
         super.viewDidLoad()
         view().viewModel = character
     }
-
 }
 

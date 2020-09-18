@@ -1,5 +1,3 @@
-import Foundation
-
 struct CharacterResponse: Decodable {
     let info: Info
     struct Info: Decodable {

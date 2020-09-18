@@ -1,6 +1,6 @@
 import UIKit
 
-class CharacterListController: UIViewController, ViewSpecificController {
+final class CharacterListController: UIViewController, ViewSpecificController {
     typealias RootView = ListView
 
     let rickApi = RickAPI ()

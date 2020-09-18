@@ -1,6 +1,6 @@
 import UIKit
 
-class LocationListController: UIViewController, ViewSpecificController {
+final class LocationListController: UIViewController, ViewSpecificController {
     typealias RootView = ListView
     
     let rickApi = RickAPI ()
@@ -30,8 +30,8 @@ extension LocationListController: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
-        let destinationViewController = LocationDetailViewController()
-        destinationViewController.locationViewModel = viewModels[indexPath.row]
+        let destinationViewController = LocationDetailController()
+        destinationViewController.location = viewModels[indexPath.row]
         navigationController?.pushViewController(destinationViewController, animated: true)
         //        present(destinationViewController, animated: true, completion: nil)
     }

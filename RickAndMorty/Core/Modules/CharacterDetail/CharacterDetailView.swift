@@ -1,6 +1,6 @@
 import UIKit
 
-class CharacterDetailView: UIView {
+final class CharacterDetailView: UIView {
     var viewModel: Character? {
         didSet {
             guard let viewModel = viewModel else { return }
@@ -88,6 +88,5 @@ class CharacterDetailView: UIView {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-
 }
 
