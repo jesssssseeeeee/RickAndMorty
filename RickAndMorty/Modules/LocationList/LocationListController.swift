@@ -5,6 +5,12 @@ final class LocationListController: UIViewController, ViewSpecificController {
     
     let rickApi = RickAPI ()
     var viewModels: [Location] = []
+    var tableViewDelegate: LocationTableViewDelegate? {
+        didSet {
+            view().tableView.delegate = tableViewDelegate
+            tableViewDelegate?.delegate = self
+        }
+    }
     
     override func loadView() {
         view = ListView(cellTypes: [UITableViewCell.self])
@@ -13,7 +19,7 @@ final class LocationListController: UIViewController, ViewSpecificController {
     override func viewDidLoad() {
         super.viewDidLoad()
         view().tableView.dataSource = self
-        view().tableView.delegate = self
+        tableViewDelegate = LocationTableViewDelegate()
         rickApi.getLocations { (response) in
             DispatchQueue.main.async {
                 self.viewModels = response.results
@@ -23,22 +29,24 @@ final class LocationListController: UIViewController, ViewSpecificController {
     }
 }
 
-extension LocationListController: UITableViewDataSource, UITableViewDelegate {
+extension LocationListController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         viewModels.count
-    }
-    
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        tableView.deselectRow(at: indexPath, animated: true)
-        let destinationViewController = LocationDetailController()
-        destinationViewController.location = viewModels[indexPath.row]
-        navigationController?.pushViewController(destinationViewController, animated: true)
-        //        present(destinationViewController, animated: true, completion: nil)
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: UITableViewCell.reuseId, for: indexPath)
         cell.textLabel?.text = viewModels[indexPath.row].name
         return cell
+    }
+}
+
+// MARK: - SelectRowDelegate
+
+extension LocationListController: SelectRowDelegate {
+    func didTapped(row: Int) {
+        let destinationViewController = LocationDetailController()
+        destinationViewController.location = viewModels[row]
+        navigationController?.pushViewController(destinationViewController, animated: true)
     }
 }

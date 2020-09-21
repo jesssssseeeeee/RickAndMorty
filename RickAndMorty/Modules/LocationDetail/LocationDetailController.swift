@@ -1,7 +1,6 @@
 import UIKit
 
 final class LocationDetailController: UIViewController, ViewSpecificController {
-    
     typealias RootView = LocationDetailView
     
     var location: Location?
@@ -14,5 +13,4 @@ final class LocationDetailController: UIViewController, ViewSpecificController {
         super.viewDidLoad()
         view().viewModel = location
     }
-    
 }

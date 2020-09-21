@@ -19,7 +19,7 @@ final class RickAPI {
         let request = getRequestForCharacter(id: "")
         URLSession.shared.dataTask(with: request) { (data, response, error) in
             guard error == nil else {
-                print(error?.localizedDescription)
+                print(error?.localizedDescription as Any)
                 return
             }
             guard let data = data else {
@@ -42,7 +42,7 @@ final class RickAPI {
         let request = getRequestForLocation(id: "")
         URLSession.shared.dataTask(with: request) { (data, response, error) in
             guard error == nil else {
-                print(error?.localizedDescription)
+                print(error?.localizedDescription as Any)
                 return
             }
             guard let data = data else {
