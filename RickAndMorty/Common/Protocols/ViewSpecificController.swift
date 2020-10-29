@@ -6,7 +6,6 @@ protocol ViewSpecificController: AnyObject {
 
 extension ViewSpecificController where Self: UIViewController {
     func view() -> RootView {
-        
-        view as! RootView
+        view as! RootView // swiftlint:disable:this force_cast
     }
 }

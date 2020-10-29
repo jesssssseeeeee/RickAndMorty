@@ -7,5 +7,3 @@ final class LocationTableViewDelegate: NSObject, UITableViewDelegate {
     
     weak var delegate: SelectRowDelegate?
 }
-
-

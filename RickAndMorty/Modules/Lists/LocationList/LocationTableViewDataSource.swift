@@ -2,6 +2,7 @@ import UIKit
 
 final class LocationTableViewDataSource: NSObject, UITableViewDataSource {
     var viewModels: [Location] = []
+    
     init(viewModel: [Location] = []) {
         self.viewModels = viewModel
     }
@@ -11,7 +12,7 @@ final class LocationTableViewDataSource: NSObject, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: UITableViewCell.reuseId, for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: LocationCell.reuseId, for: indexPath)
         cell.textLabel?.text = viewModels[indexPath.row].name
         return cell
     }

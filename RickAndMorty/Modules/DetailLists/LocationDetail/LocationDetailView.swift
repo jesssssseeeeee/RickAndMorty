@@ -9,6 +9,11 @@ final class LocationDetailView: UIView {
             typeLabel.text = viewModel.type
             dimensionLabel.text = viewModel.dimension
             createdLabel.text = viewModel.created
+//            let dateString = viewModel.created
+//            let date = Date(from: )
+//            let dateFormatter = DateFormatter()
+//            dateFormatter.dateFormat = "MM-dd-yyyy"
+//            createdLabel.text = dateFormatter.string(from: viewModel.created)
         }
     }
     
@@ -62,16 +67,23 @@ final class LocationDetailView: UIView {
             
             dimensionLabel.centerXAnchor.constraint(equalTo: safeAreaLayoutGuide.centerXAnchor),
             dimensionLabel.topAnchor.constraint(equalTo: typeLabel.bottomAnchor, constant: 50),
-            dimensionLabel.leadingAnchor.constraint(greaterThanOrEqualTo: safeAreaLayoutGuide.leadingAnchor, constant: 50),
-            dimensionLabel.trailingAnchor.constraint(lessThanOrEqualTo: safeAreaLayoutGuide.trailingAnchor, constant: -50),
+            dimensionLabel
+                .leadingAnchor
+                .constraint(greaterThanOrEqualTo: safeAreaLayoutGuide.leadingAnchor, constant: 50),
+            dimensionLabel
+                .trailingAnchor
+                .constraint(lessThanOrEqualTo: safeAreaLayoutGuide.trailingAnchor, constant: -50),
             
             createdLabel.centerXAnchor.constraint(equalTo: safeAreaLayoutGuide.centerXAnchor),
             createdLabel.topAnchor.constraint(equalTo: dimensionLabel.bottomAnchor, constant: 50),
-            createdLabel.leadingAnchor.constraint(greaterThanOrEqualTo: safeAreaLayoutGuide.leadingAnchor, constant: 50),
-            createdLabel.trailingAnchor.constraint(lessThanOrEqualTo: safeAreaLayoutGuide.trailingAnchor, constant: -50),
+            createdLabel
+                .leadingAnchor
+                .constraint(greaterThanOrEqualTo: safeAreaLayoutGuide.leadingAnchor, constant: 50),
+            createdLabel
+                .trailingAnchor
+                .constraint(lessThanOrEqualTo: safeAreaLayoutGuide.trailingAnchor, constant: -50)
         ])
     }
-    
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }

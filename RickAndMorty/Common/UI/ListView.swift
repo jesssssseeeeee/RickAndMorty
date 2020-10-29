@@ -2,12 +2,12 @@ import UIKit
 
 final class ListView: UIView {
     let tableView: UITableView = {
-        let tableView = UITableView ()
+        let tableView = UITableView()
         tableView.backgroundColor = .clear
         return tableView
     }()
     
-    init(cellTypes: [UITableViewCell.Type]) {
+    init(cellTypes: [ReusableTableViewCell.Type]) {
         super.init(frame: .zero)
         tableView.register(cellTypes)
         backgroundColor = .white
@@ -21,5 +21,4 @@ final class ListView: UIView {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-
 }

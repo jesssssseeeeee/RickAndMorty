@@ -5,10 +5,11 @@ final class CharacterDetailView: UIView {
         didSet {
             guard let viewModel = viewModel else { return }
             nameLabel.text = viewModel.name
-            statusLabel.text = viewModel.status
+            statusLabel.text = viewModel.status.rawValue
             speciesLabel.text = viewModel.species
             genderLabel.text = viewModel.gender
-            characterIcon.kf.setImage(with: URL(string: "https://rickandmortyapi.com/api/character/avatar/\(viewModel.id).jpeg"))
+            characterIcon.kf.setImage(
+                with: URL(string: "https://rickandmortyapi.com/api/character/avatar/\(viewModel.id).jpeg"))
         }
     }
     
@@ -70,8 +71,10 @@ final class CharacterDetailView: UIView {
 
             speciesLabel.centerXAnchor.constraint(equalTo: safeAreaLayoutGuide.centerXAnchor),
             speciesLabel.topAnchor.constraint(equalTo: statusLabel.bottomAnchor, constant: 20),
-            speciesLabel.leadingAnchor.constraint(greaterThanOrEqualTo: safeAreaLayoutGuide.leadingAnchor, constant: 20),
-            speciesLabel.trailingAnchor.constraint(lessThanOrEqualTo: safeAreaLayoutGuide.trailingAnchor, constant: -20),
+            speciesLabel.leadingAnchor.constraint(
+                greaterThanOrEqualTo: safeAreaLayoutGuide.leadingAnchor, constant: 20),
+            speciesLabel.trailingAnchor.constraint(
+                lessThanOrEqualTo: safeAreaLayoutGuide.trailingAnchor, constant: -20),
 
             genderLabel.centerXAnchor.constraint(equalTo: safeAreaLayoutGuide.centerXAnchor),
             genderLabel.topAnchor.constraint(equalTo: speciesLabel.bottomAnchor, constant: 20),
@@ -89,4 +92,3 @@ final class CharacterDetailView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
 }
-
