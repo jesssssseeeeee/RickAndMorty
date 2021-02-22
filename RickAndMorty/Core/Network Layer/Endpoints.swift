@@ -6,7 +6,7 @@ enum Endpoints {
     case location(id: String)
     case episode(id: String)
     case characters(page: String?)
-    case locations
+    case locations(page: String?)
     case episodes
     
     var method: HTTPMethod {
@@ -40,9 +40,11 @@ enum Endpoints {
         case .characters(let page):
             guard let page = page else { return [:] }
             return ["page":page]
+        case .locations(let page):
+            guard let page = page else { return [:] }
+            return ["page":page]
         default:
             return [:]
         }
     }
-    
 }

@@ -38,7 +38,6 @@ final class CharacterListController: UIViewController, ViewSpecificController {
     }
     
     func fetch() {
-        print("asdsadasd")
         characterService.fetch { [weak self] (result) in
             switch result {
             case .success(let characters):

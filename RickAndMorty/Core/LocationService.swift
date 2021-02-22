@@ -1,23 +1,23 @@
 import Foundation
 
-protocol CharacterService: AnyObject {
-    func fetch(completion: @escaping (Result<[Character], Error>) -> Void)
+protocol LocationService: AnyObject {
+    func fetch(completion: @escaping (Result<[Location], Error>) -> Void)
 }
 
-final class CharacterServiceImp: CharacterService {
+final class LocationServiceImp: LocationService {
     let networkService: NetworkService = NetworkServiceImp()
     var page: String?
     var isEnd = false
     
-    func fetch(completion: @escaping (Result<[Character], Error>) -> Void) {
+    func fetch(completion: @escaping (Result<[Location], Error>) -> Void) {
         guard !isEnd else {
             return
         }
-        networkService.request(.characters(page: page)) { [weak self] (result) in
+        networkService.request(.locations(page: page)) { [weak self] (result) in
             switch result {
             case .success(let data):
                 do {
-                    let response = try JSONDecoder().decode(CharacterResponse.self, from: data)
+                    let response = try JSONDecoder().decode(LocationResponse.self, from: data)
                     completion(.success(response.results))
                     guard let next = response.info.next else {
                         self?.isEnd = true

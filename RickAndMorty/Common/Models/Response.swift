@@ -11,6 +11,7 @@ struct LocationResponse: Decodable {
     let info: Info
     struct Info: Decodable {
         let count: Int
+        let next: String?
     }
     let results: [Location]
 }

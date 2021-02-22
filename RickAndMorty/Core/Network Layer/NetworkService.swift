@@ -9,7 +9,7 @@ final class NetworkServiceImp: NetworkService {
         let url = endpoint.baseURL.appendingPathComponent(endpoint.endpoint)
         var queryItems: [URLQueryItem] = []
         endpoint.queryItems.forEach {
-            queryItems.append(URLQueryItem(name: $1, value: $0))
+            queryItems.append(URLQueryItem(name: $0, value: $1))
         }
         var urlComponents = URLComponents(url: url, resolvingAgainstBaseURL: true)
         urlComponents?.queryItems = queryItems
